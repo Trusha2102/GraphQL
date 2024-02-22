@@ -4,7 +4,7 @@ type Query {
   getUsers: [User!]!
   getUser(id: Int!): User
   getTeams: [Team!]!
-  getTeam(Team_id: Int!): Team
+  getTeam(team_id: Int!): Team
   getTasks: [Task!]!
   getTask(Task_id: Int!): Task
 }
@@ -51,7 +51,7 @@ type User {
 }
 
 type Team {
-  Team_id: Int!
+  team_id: Int!
   Team_name: String!
   Members: [Int!]!
   Task_id: Int!

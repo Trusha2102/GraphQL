@@ -17,11 +17,11 @@ const resolvers = {
         getTeams: async () => {
             return prisma.team.findMany();
         },
-        // getTeam: async (_: any, { Team_id }: any) => {
-        //     return prisma.team.findUnique({
-        //         where: { Team_id },
-        //     });
-        // },
+        getTeam: async (_: any, { team_id }: any) => {
+            return prisma.team.findUnique({
+                where: { team_id },
+            });
+        },
         getTasks: async () => {
             return prisma.task.findMany();
         },
