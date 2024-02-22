@@ -1,0 +1,68 @@
+# graphql/schema.graphql
+
+type Query {
+  getUsers: [User!]!
+  getUser(id: Int!): User
+  getTeams: [Team!]!
+  getTeam(Team_id: Int!): Team
+  getTasks: [Task!]!
+  getTask(Task_id: Int!): Task
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  createTeam(input: CreateTeamInput!): Team!
+  createTask(input: CreateTaskInput!): Task!
+}
+
+input CreateUserInput {
+  first_name: String!
+  last_name: String!
+  email: String!
+  department: String!
+  designation: String!
+  team_id: Int!
+}
+
+input CreateTeamInput {
+  Team_name: String!
+  Members: [Int!]!
+  Task_id: Int!
+}
+
+input CreateTaskInput {
+  Task_id: Int!
+  task_name: String!
+  details: String!
+  department: String!
+  assigned_to: Int!
+  date_of_assigning: String!
+  date_of_submission: String!
+}
+
+type User {
+  id: Int!
+  first_name: String!
+  last_name: String!
+  email: String!
+  department: String!
+  designation: String!
+  team_id: Int!
+}
+
+type Team {
+  Team_id: Int!
+  Team_name: String!
+  Members: [Int!]!
+  Task_id: Int!
+}
+
+type Task {
+  Task_id: Int!
+  task_name: String!
+  details: String!
+  department: String!
+  assigned_to: Int!
+  date_of_assigning: String!
+  date_of_submission: String!
+}

@@ -1,0 +1,37 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int    @id @default(autoincrement())
+  first_name  String
+  last_name   String
+  email       String
+  department  String
+  designation String
+  team        Team?  @relation(fields: [team_id], references: [team_id])
+  team_id     Int?
+}
+
+model Team {
+  team_id   Int    @id @default(autoincrement())
+  Team_name String
+  Members   User[]
+  Task_id   Int
+}
+
+model Task {
+  Task_id            Int      @id @default(autoincrement())
+  task_name          String
+  details            String
+  department         String
+  assigned_to        Int
+  date_of_assigning  DateTime
+  date_of_submission DateTime
+}
